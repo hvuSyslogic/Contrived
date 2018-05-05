@@ -23,6 +23,11 @@ namespace Contrived.Web
         
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMiniProfiler(options =>
+            {
+                options.SqlFormatter = new StackExchange.Profiling.SqlFormatters.SqlServerFormatter();
+            });
+
             services.AddDbContext<ContrivedContext>(options =>
             {
                 options.UseSqlServer("server=localhost\\sql2014;database=dbContrived;Trusted_Connection=yes");
@@ -32,11 +37,6 @@ namespace Contrived.Web
             services.AddTransient<MathService>();
 
             services.AddMvc();
-
-            services.AddMiniProfiler(options =>
-            {
-                options.SqlFormatter = new StackExchange.Profiling.SqlFormatters.InlineFormatter();
-            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
