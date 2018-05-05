@@ -48,5 +48,12 @@ namespace Contrived.Data.Services
                 .GroupBy(p => p.AuthorId)
                 .ToDictionary(gp => gp.First().Author.Name, gp => gp.Count());
         }
+
+        public string GetRandomAuthorName()
+        {
+            return _contrivedContext.Authors
+                .OrderBy(a => Guid.NewGuid())
+                .FirstOrDefault()?.Name;
+        }
     }
 }

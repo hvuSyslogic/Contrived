@@ -5,3 +5,22 @@
 <h3>@ViewData["Message"]</h3>
 
 <p>Use this area to provide additional information.</p>
+
+<button class="getmoredata">Get Random Author</button>
+
+<p>Authors</p>
+<ul class="authorlist">
+
+</ul>
+
+@section Scripts
+{
+    <script>
+        $(".getmoredata").click(function(ev) {
+            $.get("/home/randomauthor",
+                function(data) {
+                    $(".authorlist").append("<li>" + data + "</li>");
+                });
+        });
+    </script>    
+}

@@ -62,6 +62,11 @@ namespace Contrived.Web.Controllers
             return View();
         }
 
+        public string RandomAuthor()
+        {
+            return _blogService.GetRandomAuthorName();
+        }
+
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";

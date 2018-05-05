@@ -22,9 +22,10 @@ namespace Contrived.Web
             services
                 .AddMiniProfiler(options =>
                 {
-                    //options.ShouldProfile = (httpRequest) => httpRequest.QueryString.HasValue;
-                    //options.SqlFormatter = new StackExchange.Profiling.SqlFormatters.SqlServerFormatter();
+                    //options.ShowControls = true;
 
+                    //options.ShouldProfile = (httpRequest) => httpRequest.QueryString.HasValue;
+                    
                     options.TrackConnectionOpenClose = false;
                 })
                 .AddEntityFramework()
