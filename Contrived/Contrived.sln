@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contrived.Web", "Contrived.Web\Contrived.Web.csproj", "{9943BAD0-E33B-4B87-B987-C55342334E70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contrived.Data", "Contrived.Data\Contrived.Data.csproj", "{70953EF2-DF39-48C6-A28C-5D86E68AAD6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9943BAD0-E33B-4B87-B987-C55342334E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9943BAD0-E33B-4B87-B987-C55342334E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9943BAD0-E33B-4B87-B987-C55342334E70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70953EF2-DF39-48C6-A28C-5D86E68AAD6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70953EF2-DF39-48C6-A28C-5D86E68AAD6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70953EF2-DF39-48C6-A28C-5D86E68AAD6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70953EF2-DF39-48C6-A28C-5D86E68AAD6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

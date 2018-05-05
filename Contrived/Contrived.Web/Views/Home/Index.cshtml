@@ -1,11 +1,15 @@
-﻿@{
+﻿@model IList<Contrived.Web.Models.PostModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="row">
-    <div class="col-md-3">
-        <h2>Post Title</h2>
-        <h6>Author</h6>
-        <p>Body contet here...</p>
-    </div>
+    @foreach (var post in Model)
+    {
+        <div class="col-md-12">
+            <h2>@post.Title</h2>
+            <h6>Author</h6>
+            <p>@post.Body</p>
+        </div>
+    }
 </div>
