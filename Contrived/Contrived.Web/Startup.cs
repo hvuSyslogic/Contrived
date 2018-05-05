@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Contrived.Data.Persistence;
+﻿using Contrived.Data.Persistence;
 using Contrived.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,10 +19,16 @@ namespace Contrived.Web
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMiniProfiler(options =>
-            {
-                options.SqlFormatter = new StackExchange.Profiling.SqlFormatters.SqlServerFormatter();
-            });
+            services
+                .AddMiniProfiler(options =>
+                {
+                    //options.ShouldProfile = (httpRequest) => httpRequest.QueryString.HasValue;
+                    //options.SqlFormatter = new StackExchange.Profiling.SqlFormatters.SqlServerFormatter();
+
+                    options.TrackConnectionOpenClose = false;
+                })
+                .AddEntityFramework()
+                ;
 
             services.AddDbContext<ContrivedContext>(options =>
             {

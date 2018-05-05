@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Contrived.Data.Domain
 {
-    [Table("tblBlog")]
     public class Blog
     {
         public int Id { get; set; }

@@ -21,18 +21,16 @@ namespace Contrived.Data.Services
 
         public IList<Post> GetPosts()
         {
-            using (MiniProfiler.Current.Step("Getting all posts"))
+            using (MiniProfiler.Current.Step("Getting top posts"))
             {
                 var count = _mathService.RandomNumbo();
 
-                var posts = _contrivedContext.Posts.ToList();
+                var posts = _contrivedContext.Posts
+                    .OrderByDescending(p => p.PostDate)
+                    .Take(count)
+                    .ToList();
 
-                return new List<Post>()
-                {
-                    new Post { Id = 1, Title = $"New Post {count}", Body = "Post Content" },
-                    new Post { Id = 2, Title = $"New Post {posts.Count}", Body = "Post Content" },
-                    new Post { Id = 3, Title = "New Post  3", Body = "Post Content" },
-                };
+                return posts;
             }
         }
         

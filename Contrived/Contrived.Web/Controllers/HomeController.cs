@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Contrived.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using Contrived.Web.Models;
+using StackExchange.Profiling;
 
 namespace Contrived.Web.Controllers
 {
@@ -23,9 +25,28 @@ namespace Contrived.Web.Controllers
         {
             var posts = _blogService.GetPosts();
 
-            var model = posts.Select(p => new PostModel { Id = p.Id, Title = p.Title, Body = p.Body}).ToList();
+            var model = posts
+                .Select(p => new PostModel
+                {
+                    Id = p.Id,
+                    Title = p.Title,
+                    Author = p.AuthorId.ToString(),
+                    PostDate = p.PostDate,
+                    Body = p.Body
+                })
+                .ToList();
             
             return View(model);
+        }
+
+        public IActionResult Redirect()
+        {
+            using (MiniProfiler.Current.Step("Determine home page"))
+            {
+                Thread.Sleep(1000);
+            }
+            
+            return RedirectToAction("Index");
         }
 
         public IActionResult About()
