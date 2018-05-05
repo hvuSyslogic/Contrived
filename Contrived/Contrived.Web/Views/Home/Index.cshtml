@@ -1,16 +1,28 @@
-﻿@model IList<Contrived.Web.Models.PostModel>
+﻿@model Contrived.Web.Models.PostListModel
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="row">
-    @foreach (var post in Model)
-    {
-        <div class="col-md-12">
-            <h2>@post.Title</h2>
-            <h6>By: @post.Author</h6>
-            <h6>On: @post.PostDate.ToShortDateString()</h6>
-            <p>@post.Body</p>
-        </div>
-    }
+    <div class="col-xs-8">
+        @foreach (var post in Model.Posts)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>@post.Title</h2>
+                    <h6>By: @post.Author</h6>
+                    <h6>On: @post.PostDate.ToShortDateString()</h6>
+                    <p>@post.Body</p>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-xs-4">
+        @foreach (var authorCount in Model.AuthorCounts)
+        {
+            <div>
+                Author: @authorCount.Key: @authorCount.Value
+            </div>
+        }
+    </div>
 </div>

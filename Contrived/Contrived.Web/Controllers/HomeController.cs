@@ -25,17 +25,23 @@ namespace Contrived.Web.Controllers
         {
             var posts = _blogService.GetPosts();
 
-            var model = posts
-                .Select(p => new PostModel
-                {
-                    Id = p.Id,
-                    Title = p.Title,
-                    Author = p.AuthorId.ToString(),
-                    PostDate = p.PostDate,
-                    Body = p.Body
-                })
-                .ToList();
-            
+            var model = new PostListModel
+            {
+                Posts = posts
+                    .Select(p => new PostModel
+                    {
+                        Id = p.Id,
+                        Title = p.Title,
+                        //Author = p.AuthorId.ToString(),
+                        Author = _blogService.GetAuthorName(p.AuthorId),
+                        PostDate = p.PostDate,
+                        Body = p.Body
+                    })
+                    .ToList()
+            };
+
+            model.AuthorCounts = _blogService.GetAuthorCounts();
+
             return View(model);
         }
 

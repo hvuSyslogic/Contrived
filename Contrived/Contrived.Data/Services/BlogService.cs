@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Contrived.Data.Domain;
 using Contrived.Data.Persistence;
+using Microsoft.EntityFrameworkCore;
 using StackExchange.Profiling;
 
 namespace Contrived.Data.Services
@@ -33,6 +34,19 @@ namespace Contrived.Data.Services
                 return posts;
             }
         }
-        
+
+        public string GetAuthorName(int authorId)
+        {
+            return _contrivedContext.Authors
+                .FirstOrDefault(a => a.Id == authorId)?.Name ?? "";
+        }
+
+        public IDictionary<string, int> GetAuthorCounts()
+        {
+            return _contrivedContext.Posts
+                .Include(p => p.Author)
+                .GroupBy(p => p.AuthorId)
+                .ToDictionary(gp => gp.First().Author.Name, gp => gp.Count());
+        }
     }
 }
