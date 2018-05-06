@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using Contrived.Data.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -28,8 +27,8 @@ namespace Contrived.Web.Controllers
                     {
                         Id = p.Id,
                         Title = p.Title,
-                        //Author = p.AuthorId.ToString(),
-                        Author = _blogService.GetAuthorName(p.AuthorId),
+                        Author = p.AuthorId.ToString(),
+                        //Author = _blogService.GetAuthorName(p.AuthorId),
                         PostDate = p.PostDate,
                         Body = p.Body
                     })
@@ -68,11 +67,6 @@ namespace Contrived.Web.Controllers
             ViewData["Message"] = "Your contact page.";
 
             return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Contrived.Data.Domain;
 using Contrived.Data.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -20,28 +19,28 @@ namespace Contrived.Data.Services
             _contrivedContext = contrivedContext;
         }
 
-        public IList<Post> GetPosts()
+        public virtual IList<Post> GetPosts()
         {
-            //using (MiniProfiler.Current.Step("Getting top posts"))
-            //{
-                var count = 7;// _mathService.RandomNumbo();
+            using (MiniProfiler.Current.Step("Getting top posts"))
+            {
+                var count = _mathService.RandomNumbo();
 
                 var posts = _contrivedContext.Posts
-                    //.OrderByDescending(p => p.PostDate)
-                    //.Take(count)
+                    .OrderByDescending(p => p.PostDate)
+                    .Take(count)
                     .ToList();
 
                 return posts;
-            //}
+            }
         }
 
-        public string GetAuthorName(int authorId)
+        public virtual string GetAuthorName(int authorId)
         {
             return _contrivedContext.Authors
                 .FirstOrDefault(a => a.Id == authorId)?.Name ?? "";
         }
 
-        public IDictionary<string, int> GetAuthorCounts()
+        public virtual IDictionary<string, int> GetAuthorCounts()
         {
             return _contrivedContext.Posts
                 .Include(p => p.Author)
@@ -49,7 +48,7 @@ namespace Contrived.Data.Services
                 .ToDictionary(gp => gp.First().Author.Name, gp => gp.Count());
         }
 
-        public string GetRandomAuthorName()
+        public virtual string GetRandomAuthorName()
         {
             return _contrivedContext.Authors
                 .OrderBy(a => Guid.NewGuid())
