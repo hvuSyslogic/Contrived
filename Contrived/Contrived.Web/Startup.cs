@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Profiling.Storage;
 
 namespace Contrived.Web
 {
@@ -19,21 +20,27 @@ namespace Contrived.Web
         
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("Contrived");
+
+            var miniProfilerSettings = Configuration.GetSection("MiniProfiler").Get<MiniProfilerSettings>();
             services
                 .AddMiniProfiler(options =>
                 {
                     //options.ShowControls = true;
 
                     //options.ShouldProfile = (httpRequest) => httpRequest.QueryString.HasValue;
+                    options.ShouldProfile = (request) => miniProfilerSettings.Enabled;
                     
                     options.TrackConnectionOpenClose = false;
+
+                    //options.Storage = new SqlServerStorage(connectionString);
                 })
                 .AddEntityFramework()
                 ;
 
             services.AddDbContext<ContrivedContext>(options =>
             {
-                options.UseSqlServer("server=localhost\\sql2014;database=dbContrived;Trusted_Connection=yes");
+                options.UseSqlServer(connectionString);
             });
             
             services.AddTransient<BlogService>();
@@ -57,5 +64,10 @@ namespace Contrived.Web
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+    }
+
+    public class MiniProfilerSettings
+    {
+        public bool Enabled { get; set; }
     }
 }

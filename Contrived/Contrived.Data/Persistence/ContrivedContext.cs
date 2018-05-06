@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Contrived.Data.Domain;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,7 +22,7 @@ namespace Contrived.Data.Persistence
             modelBuilder.Entity<Author>().HasData(
                 new Author { Id = 1, Name = "Sara" },
                 new Author { Id = 2, Name = "Lindsay" },
-                new Author { Id = 3, Name = "Ashley" }
+                new Author { Id = 3, Name = "Claire" }
             );
 
             modelBuilder.Entity<Post>().HasData(

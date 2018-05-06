@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Contrived.Data.Domain;
-using Contrived.Data.Persistence;
+﻿using Contrived.Data.Persistence;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using StackExchange.Profiling;
+using StackExchange.Profiling.Storage;
 
 namespace Contrived.Web.Controllers
 {
@@ -19,9 +17,24 @@ namespace Contrived.Web.Controllers
         
         public IActionResult Index()
         {
-            _contrivedContext.Database.EnsureDeleted();
-            _contrivedContext.Database.EnsureCreated();
+            using (MiniProfiler.Current.Step("Delete Database"))
+            {
+                _contrivedContext.Database.EnsureDeleted();
+            }
+
+            using (MiniProfiler.Current.Step("Created and Seed Database"))
+            {
+                _contrivedContext.Database.EnsureCreated();
+            }
             
+            var storage = new SqlServerStorage("");
+            var scripts = storage.TableCreationScripts;
+
+            foreach (var script in scripts)
+            {
+                _contrivedContext.Database.ExecuteSqlCommand(script);
+            }
+
             return RedirectToAction("Index", "Home");
         }
     }

@@ -52,6 +52,7 @@ namespace Contrived.Web.Controllers
                 Thread.Sleep(1000);
             }
             
+
             return RedirectToAction("Index");
         }
 
