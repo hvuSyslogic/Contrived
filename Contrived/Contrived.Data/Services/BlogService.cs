@@ -22,17 +22,17 @@ namespace Contrived.Data.Services
 
         public IList<Post> GetPosts()
         {
-            using (MiniProfiler.Current.Step("Getting top posts"))
-            {
-                var count = _mathService.RandomNumbo();
+            //using (MiniProfiler.Current.Step("Getting top posts"))
+            //{
+                var count = 7;// _mathService.RandomNumbo();
 
                 var posts = _contrivedContext.Posts
-                    .OrderByDescending(p => p.PostDate)
-                    .Take(count)
+                    //.OrderByDescending(p => p.PostDate)
+                    //.Take(count)
                     .ToList();
 
                 return posts;
-            }
+            //}
         }
 
         public string GetAuthorName(int authorId)

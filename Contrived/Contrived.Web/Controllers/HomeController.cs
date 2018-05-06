@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using Contrived.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using Contrived.Web.Models;
@@ -19,8 +16,7 @@ namespace Contrived.Web.Controllers
         {
             _blogService = blogService;
         }
-
-
+        
         public IActionResult Index()
         {
             var posts = _blogService.GetPosts();
@@ -52,7 +48,6 @@ namespace Contrived.Web.Controllers
                 Thread.Sleep(1000);
             }
             
-
             return RedirectToAction("Index");
         }
 

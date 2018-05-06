@@ -15,6 +15,8 @@ namespace Contrived.Data.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Blog>().HasData(
                 new Blog { Id = 1, Name = "Contrived Blog" }
             );

@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contrived.Web", "Contrived.Web\Contrived.Web.csproj", "{9943BAD0-E33B-4B87-B987-C55342334E70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contrived.Web", "Contrived.Web\Contrived.Web.csproj", "{9943BAD0-E33B-4B87-B987-C55342334E70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contrived.Data", "Contrived.Data\Contrived.Data.csproj", "{70953EF2-DF39-48C6-A28C-5D86E68AAD6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contrived.Data", "Contrived.Data\Contrived.Data.csproj", "{70953EF2-DF39-48C6-A28C-5D86E68AAD6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contrived.Web.Tests", "Contrived.Web.Tests\Contrived.Web.Tests.csproj", "{A8CB080B-F19B-472B-9E15-1A4168E54674}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contrived.Console", "Contrived.Console\Contrived.Console.csproj", "{12B4FA16-1F79-4914-B135-CD7FD00802E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{70953EF2-DF39-48C6-A28C-5D86E68AAD6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70953EF2-DF39-48C6-A28C-5D86E68AAD6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70953EF2-DF39-48C6-A28C-5D86E68AAD6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8CB080B-F19B-472B-9E15-1A4168E54674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8CB080B-F19B-472B-9E15-1A4168E54674}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8CB080B-F19B-472B-9E15-1A4168E54674}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8CB080B-F19B-472B-9E15-1A4168E54674}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12B4FA16-1F79-4914-B135-CD7FD00802E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12B4FA16-1F79-4914-B135-CD7FD00802E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12B4FA16-1F79-4914-B135-CD7FD00802E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12B4FA16-1F79-4914-B135-CD7FD00802E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

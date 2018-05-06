@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Profiling;
 using StackExchange.Profiling.Storage;
 
 namespace Contrived.Web
@@ -27,9 +28,9 @@ namespace Contrived.Web
                 .AddMiniProfiler(options =>
                 {
                     //options.ShowControls = true;
-
+                    
                     //options.ShouldProfile = (httpRequest) => httpRequest.QueryString.HasValue;
-                    options.ShouldProfile = (request) => miniProfilerSettings.Enabled;
+                    //options.ShouldProfile = (request) => miniProfilerSettings.Enabled;
                     
                     options.TrackConnectionOpenClose = false;
 
